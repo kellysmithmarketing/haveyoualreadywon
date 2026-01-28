@@ -21,9 +21,9 @@ const values = [
 ];
 
 const leadership = [
-  { name: "Servando Ramirez", title: "Co-Founder" },
-  { name: "Jose R. Ramirez", title: "Co-Founder" },
-  { name: "Omar Contreras", title: "Commercial Division Lead" },
+  { name: "Servando Ramirez", title: "Owner / CEO" },
+  { name: "Omar Contreras", title: "Owner / CFO" },
+  { name: "William Perez", title: "Owner / Operations Coordinator" },
 ];
 
 const About = () => {
@@ -44,7 +44,7 @@ const About = () => {
             
             {/* Experience Badge */}
             <div className="absolute -bottom-6 -right-6 md:bottom-8 md:right-8 bg-primary text-primary-foreground p-6 rounded-xl shadow-lg">
-              <div className="text-4xl font-display font-bold">50+</div>
+              <div className="text-4xl font-display font-bold">60+</div>
               <div className="text-sm font-semibold uppercase tracking-wider">Years Combined Experience</div>
             </div>
           </div>

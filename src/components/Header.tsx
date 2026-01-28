@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import logoLight from "@/assets/logo-light.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Services", href: "#services" },
   { name: "About", href: "#about" },
-  { name: "Careers", href: "#careers" },
+  { name: "Careers", href: "/careers", isPage: true },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -41,7 +42,7 @@ const Header = () => {
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo - 20% larger */}
           <a
             href="#home"
             onClick={(e) => {
@@ -53,35 +54,45 @@ const Header = () => {
             <img
               src={logoLight}
               alt="Rowtek Energy"
-              className="h-12 md:h-14 w-auto"
+              className="h-14 md:h-[68px] w-auto"
             />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
-                className="text-sm font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.name}
-              </a>
+              link.isPage ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }}
+                  className="text-sm font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:+19565784927"
+              href="tel:+19033732726"
               className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-light transition-colors"
             >
               <Phone className="w-4 h-4" />
-              (956) 578-4927
+              (903) 373-2726
             </a>
             <Button
               variant="hero"
@@ -106,17 +117,28 @@ const Header = () => {
           <div className="lg:hidden bg-background/98 backdrop-blur-md border-t border-border">
             <nav className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  className="px-4 py-3 text-base font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
-                >
-                  {link.name}
-                </a>
+                link.isPage ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-3 text-base font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    className="px-4 py-3 text-base font-display font-semibold uppercase tracking-wider text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <div className="px-4 pt-4 border-t border-border mt-2">
                 <Button
