@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import LogoBanner from "@/components/LogoBanner";
 import WhyRowtek from "@/components/WhyRowtek";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
@@ -14,6 +15,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <LogoBanner />
         <WhyRowtek />
         <Services />
         <Stats />

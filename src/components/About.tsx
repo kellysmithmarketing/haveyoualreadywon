@@ -1,5 +1,5 @@
 import { CheckCircle } from "lucide-react";
-import electricalSwitchgearImg from "@/assets/stats-bg.jpg";
+import pipelineImg from "@/assets/pipeline.jpg";
 
 const values = [
   {
@@ -35,8 +35,8 @@ const About = () => {
           <div className="relative">
             <div className="relative rounded-xl overflow-hidden">
               <img
-                src={electricalSwitchgearImg}
-                alt="Electrical switchgear equipment"
+                src={pipelineImg}
+                alt="Industrial pipeline infrastructure"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
