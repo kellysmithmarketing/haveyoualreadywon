@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoDark from "@/assets/logo-dark.png";
+import logoLight from "@/assets/logo-light.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,9 +19,9 @@ const Footer = () => {
           {/* Logo & Tagline */}
           <div className="lg:col-span-1">
             <img
-              src={logoDark}
+              src={logoLight}
               alt="Rowtek Energy"
-              className="h-16 w-auto mb-4"
+              className="h-20 w-auto mb-4"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Delivering specialized electrical, instrumentation, and automation services to the energy sector since day one.
