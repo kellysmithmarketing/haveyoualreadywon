@@ -1,5 +1,7 @@
+import statsBg from "@/assets/stats-bg.jpg";
+
 const stats = [
-  { value: "50+", label: "Years Combined Experience", description: "Leadership expertise in energy infrastructure" },
+  { value: "60+", label: "Years Combined Experience", description: "Leadership expertise in energy infrastructure" },
   { value: "100+", label: "Projects Completed", description: "Successfully delivered across four states" },
   { value: "24/7", label: "Emergency Support", description: "Response and troubleshooting support" },
   { value: "4", label: "States Served", description: "Texas, Louisiana, Oklahoma & New Mexico" },
@@ -7,8 +9,18 @@ const stats = [
 
 const Stats = () => {
   return (
-    <section className="py-16 md:py-20 bg-card border-y border-border">
-      <div className="container-wide">
+    <section className="relative py-16 md:py-20 border-y border-border overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={statsBg}
+          alt="Pipeline infrastructure"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/90" />
+      </div>
+
+      <div className="container-wide relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div

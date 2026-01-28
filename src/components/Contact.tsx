@@ -9,12 +9,12 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Office",
-    details: ["34429 FM 732", "San Benito, TX 78586"],
+    details: ["1745 County Rd 4120", "Jacksonville, TX 75766"],
   },
   {
     icon: Phone,
     title: "Phone",
-    details: ["Main: (956) 578-4927", "Office: (956) 407-9291"],
+    details: ["Main: (903) 373-2726", "Office: (956) 456-2971", "Operations: (903) 339-9615"],
   },
   {
     icon: Mail,
@@ -70,7 +70,7 @@ const Contact = () => {
             Let's Discuss Your Project
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Whether you need emergency troubleshooting support or want to plan your next major capital project, the Rowtek Energy team is ready to help.
+            Whether you need emergency technical and electrical support or the planning and construction of your new facility, the Rowtek Energy team is ready to help.
           </p>
         </div>
 
@@ -179,9 +179,8 @@ const Contact = () => {
                   <option value="">Select a service...</option>
                   <option value="controls">Process Controls & Automation</option>
                   <option value="electrical">Electrical & Instrumentation</option>
-                  <option value="pipeline">Pipeline Services</option>
-                  <option value="roustabout">Roustabout & Field Services</option>
-                  <option value="civil">Civil Construction</option>
+                  <option value="skid">Skid Packages</option>
+                  <option value="consulting">Consulting/Inspection</option>
                   <option value="other">Other</option>
                 </select>
               </div>

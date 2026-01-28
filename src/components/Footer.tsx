@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoDark from "@/assets/logo-dark.png";
 
 const Footer = () => {
@@ -31,7 +32,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-foreground mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {["Home", "Services", "About", "Careers", "Contact"].map((link) => (
+              {["Home", "Services", "About", "Contact"].map((link) => (
                 <li key={link}>
                   <button
                     onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
@@ -41,6 +42,14 @@ const Footer = () => {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/careers"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Careers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -50,9 +59,8 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>Process Controls & Automation</li>
               <li>Electrical & Instrumentation</li>
-              <li>Pipeline Services</li>
-              <li>Roustabout & Field Services</li>
-              <li>Civil Construction</li>
+              <li>Skid Packages</li>
+              <li>Consulting/Inspection</li>
             </ul>
           </div>
 
@@ -63,14 +71,22 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-muted-foreground">
-                  34429 FM 732<br />San Benito, TX 78586
+                  1745 County Rd 4120<br />Jacksonville, TX 75766
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="tel:+19565784927" className="text-muted-foreground hover:text-primary transition-colors">
-                  (956) 578-4927
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <div className="text-muted-foreground">
+                  <a href="tel:+19033732726" className="hover:text-primary transition-colors block">
+                    Main: (903) 373-2726
+                  </a>
+                  <a href="tel:+19564562971" className="hover:text-primary transition-colors block">
+                    Office: (956) 456-2971
+                  </a>
+                  <a href="tel:+19033399615" className="hover:text-primary transition-colors block">
+                    Operations: (903) 339-9615
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
