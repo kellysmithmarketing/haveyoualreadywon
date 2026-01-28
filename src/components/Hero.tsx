@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBgVideo from "@/assets/hero-bg.mp4";
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -11,18 +12,17 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* YouTube Video Background - loop=1 with playlist for seamless looping */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 w-full h-full">
-          <iframe
-            src="https://www.youtube.com/embed/19IAvWIcA04?autoplay=1&mute=1&loop=1&playlist=19IAvWIcA04&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080&start=1&end=0"
-            title="Rowtek Energy Background Video"
-            className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{ minWidth: '177.78vh', minHeight: '100vw' }}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          />
-        </div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        >
+          <source src={heroBgVideo} type="video/mp4" />
+        </video>
         {/* Gradient Overlay */}
         <div 
           className="absolute inset-0 z-10"
