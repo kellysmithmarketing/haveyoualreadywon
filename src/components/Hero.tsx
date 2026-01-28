@@ -1,6 +1,5 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoTransparent from "@/assets/logo-light.png";
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -36,15 +35,6 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-20 container-wide text-center">
         <div className="max-w-4xl mx-auto space-y-8 animate-fade-up">
-          {/* Centered Logo */}
-          <div className="flex justify-center mb-6">
-            <img
-              src={logoTransparent}
-              alt="Rowtek Energy"
-              className="w-[400px] md:w-[500px] lg:w-[600px] h-auto"
-            />
-          </div>
-
           {/* Tagline */}
           <p className="text-sm md:text-base font-display font-semibold uppercase tracking-[0.3em] text-primary">
             Keep Energy Moving
@@ -55,11 +45,6 @@ const Hero = () => {
             Powering Critical{" "}
             <span className="text-gradient-gold">Energy Infrastructure</span>
           </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 max-w-3xl mx-auto font-light leading-relaxed">
-            Electrical, Instrumentation & Automation Solutions That Keep Your Operations Running
-          </p>
 
           {/* Description */}
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
