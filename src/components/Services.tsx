@@ -29,7 +29,7 @@ const services = [
 
 const secondaryService = {
   icon: ClipboardCheck,
-  title: "Consultant/Inspection",
+  title: "Consulting/Inspection",
   description: "Independent electrical inspection services, project planning and acquisition support, facility evaluation and recommendation.",
 };
 
