@@ -106,8 +106,8 @@ const Footer = () => {
                   <a href="tel:+19033732726" className="hover:text-primary transition-colors block">
                     Main: (903) 373-2726
                   </a>
-                  <a href="tel:+19564562971" className="hover:text-primary transition-colors block">
-                    Office: (956) 456-2971
+                  <a href="tel:+19727620462" className="hover:text-primary transition-colors block">
+                    Office: (972) 762-0462
                   </a>
                   <a href="tel:+19033399615" className="hover:text-primary transition-colors block">
                     Operations: (903) 339-9615

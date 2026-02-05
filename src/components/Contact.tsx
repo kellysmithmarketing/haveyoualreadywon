@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["Main: (903) 373-2726", "Office: (956) 456-2971", "Operations: (903) 339-9615"],
+    details: ["Main: (903) 373-2726", "Office: (972) 762-0462", "Operations: (903) 339-9615"],
   },
   {
     icon: Mail,
