@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Briefcase, GraduationCap, TrendingUp, Shield, DollarSign, ChevronRight, Upload, ArrowLeft } from "lucide-react";
+import { Briefcase, GraduationCap, TrendingUp, Shield, DollarSign, ChevronRight, Upload, ArrowLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { WEB3FORMS_ACCESS_KEY } from "@/config/web3forms";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -39,6 +40,7 @@ const positions = [
 
 const CareersPage = () => {
   const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,18 +50,55 @@ const CareersPage = () => {
   });
   const [resumeFile, setResumeFile] = useState<File | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Application submitted successfully! We'll be in touch soon.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      position: "",
-      message: "",
-    });
-    setResumeFile(null);
-    setSelectedPosition(null);
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.position) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Job Application: ${formData.position} - ${formData.name}`,
+          from_name: "Rowtek Energy Careers",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          position: formData.position,
+          message: formData.message || "No additional information provided",
+          resume: resumeFile ? `Resume attached: ${resumeFile.name}` : "No resume uploaded",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Application submitted successfully! We'll be in touch soon.");
+        setFormData({ name: "", email: "", phone: "", position: "", message: "" });
+        setResumeFile(null);
+        setSelectedPosition(null);
+      } else {
+        throw new Error(result.message || "Failed to submit application");
+      }
+    } catch (error) {
+      console.error("Application submission error:", error);
+      toast.error("Failed to submit application. Please try again or call us directly at (903) 373-2726.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -281,8 +320,15 @@ const CareersPage = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full">
-                  Submit Application
+                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "Submit Application"
+                  )}
                 </Button>
               </form>
             </div>

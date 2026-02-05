@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-
-// TODO: Replace with your Web3Forms access key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+import { WEB3FORMS_ACCESS_KEY } from "@/config/web3forms";
 
 const contactInfo = [
   {
@@ -22,7 +20,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["info@rowtokenergy.com"],
+    details: ["sramirez@rowtekenergy.com"],
   },
   {
     icon: Clock,
@@ -33,6 +31,13 @@ const contactInfo = [
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText("sramirez@rowtekenergy.com");
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -137,9 +142,24 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-foreground">{item.title}</h4>
-                  {item.details.map((detail) => (
-                    <p key={detail} className="text-muted-foreground text-sm">{detail}</p>
-                  ))}
+                  {item.title === "Email" ? (
+                    <button
+                      onClick={handleCopyEmail}
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors flex items-center gap-1.5 group"
+                      title="Click to copy email"
+                    >
+                      <span>sramirez@rowtekenergy.com</span>
+                      {emailCopied ? (
+                        <Check className="w-3 h-3 text-green-500" />
+                      ) : (
+                        <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      )}
+                    </button>
+                  ) : (
+                    item.details.map((detail) => (
+                      <p key={detail} className="text-muted-foreground text-sm">{detail}</p>
+                    ))
+                  )}
                 </div>
               </div>
             ))}
