@@ -1,7 +1,33 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Phone, Mail, MapPin, Copy, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoLight from "@/assets/logo-light.png";
 
+const CopyEmail = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "sramirez@rowtekenergy.com";
+  
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group"
+      title="Click to copy email"
+    >
+      <span>{email}</span>
+      {copied ? (
+        <Check className="w-3 h-3 text-green-500" />
+      ) : (
+        <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+      )}
+    </button>
+  );
+};
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -90,9 +116,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="mailto:info@rowtokenergy.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  info@rowtokenergy.com
-                </a>
+                <CopyEmail />
               </li>
             </ul>
           </div>
