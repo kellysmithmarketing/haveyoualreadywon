@@ -1,4 +1,3 @@
-import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBgVideo from "@/assets/hero-bg.mp4";
 
@@ -70,15 +69,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <button 
-            onClick={() => scrollToSection("#why-rowtek")}
-            className="text-foreground/50 hover:text-primary transition-colors"
-          >
-            <ChevronDown className="w-8 h-8" />
-          </button>
-        </div>
       </div>
     </section>
   );

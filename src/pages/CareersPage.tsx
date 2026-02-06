@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Briefcase, GraduationCap, TrendingUp, Shield, DollarSign, ChevronRight, Upload, ArrowLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,6 +39,10 @@ const positions = [
 ];
 
 const CareersPage = () => {
+  // Scroll to top when the page mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({

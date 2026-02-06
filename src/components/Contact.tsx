@@ -20,7 +20,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["sramirez@rowtekenergy.com"],
+    details: ["info@rowtekenergy.com"],
   },
   {
     icon: Clock,
@@ -34,7 +34,7 @@ const Contact = () => {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = async () => {
-    await navigator.clipboard.writeText("sramirez@rowtekenergy.com");
+    await navigator.clipboard.writeText("info@rowtekenergy.com");
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2000);
   };
@@ -148,7 +148,7 @@ const Contact = () => {
                       className="text-muted-foreground text-sm hover:text-primary transition-colors flex items-center gap-1.5 group"
                       title="Click to copy email"
                     >
-                      <span>sramirez@rowtekenergy.com</span>
+                      <span>info@rowtekenergy.com</span>
                       {emailCopied ? (
                         <Check className="w-3 h-3 text-green-500" />
                       ) : (
