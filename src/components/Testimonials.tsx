@@ -8,8 +8,8 @@ const testimonials = [
   },
   {
     quote: "I've worked closely with this team on many occasions—from new construction SWDs to trouble calls and controls troubleshooting. They're always ready to help.",
-    author: "Johnny N.",
-    role: "Field Operations Manager",
+    author: "Brian G.",
+    role: "Chief Electrical Inspector",
   },
   {
     quote: "Their QA/QC process really helped guide us in the right direction. They provided great input on industry standards and worked very well with our team.",

@@ -5,7 +5,7 @@ import logoLight from "@/assets/logo-light.png";
 
 const CopyEmail = () => {
   const [copied, setCopied] = useState(false);
-  const email = "sramirez@rowtekenergy.com";
+  const email = "info@rowtekenergy.com";
   
   const handleCopy = async () => {
     await navigator.clipboard.writeText(email);
