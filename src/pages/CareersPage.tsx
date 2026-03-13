@@ -289,7 +289,7 @@ const CareersPage = () => {
                 {/* Resume Upload */}
                 <div>
                   <label className="block text-sm font-semibold mb-2">
-                    Resume *
+                    Resume <span className="text-muted-foreground font-normal">(optional)</span>
                   </label>
                   <div className="relative">
                     <input
@@ -297,7 +297,6 @@ const CareersPage = () => {
                       id="resume"
                       accept=".pdf,.doc,.docx"
                       onChange={handleFileChange}
-                      required
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                     />
                     <div className="flex items-center gap-3 p-4 rounded-lg bg-background border border-input border-dashed hover:border-primary/50 transition-colors">
