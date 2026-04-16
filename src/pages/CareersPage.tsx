@@ -90,6 +90,7 @@ const CareersPage = () => {
       });
 
       const result = await response.json();
+      console.log("Web3Forms response:", result);
 
       if (result.success) {
         toast.success("Application submitted successfully! We'll be in touch soon.");
@@ -97,6 +98,7 @@ const CareersPage = () => {
         setResumeFile(null);
         setSelectedPosition(null);
       } else {
+        console.error("Web3Forms error details:", result);
         throw new Error(result.message || "Failed to submit application");
       }
     } catch (error) {
