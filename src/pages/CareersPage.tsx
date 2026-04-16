@@ -71,20 +71,22 @@ const CareersPage = () => {
     setIsSubmitting(true);
 
     try {
+      const submission = new FormData();
+      submission.append("access_key", WEB3FORMS_ACCESS_KEY);
+      submission.append("subject", `Job Application: ${formData.position} - ${formData.name}`);
+      submission.append("from_name", "Rowtek Energy Careers");
+      submission.append("name", formData.name);
+      submission.append("email", formData.email);
+      submission.append("phone", formData.phone);
+      submission.append("position", formData.position);
+      submission.append("message", formData.message || "No additional information provided");
+      if (resumeFile) {
+        submission.append("attachment", resumeFile);
+      }
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Job Application: ${formData.position} - ${formData.name}`,
-          from_name: "Rowtek Energy Careers",
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          position: formData.position,
-          message: formData.message || "No additional information provided",
-          resume: resumeFile ? `Resume attached: ${resumeFile.name}` : "No resume uploaded",
-        }),
+        body: submission,
       });
 
       const result = await response.json();
